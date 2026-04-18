@@ -2,47 +2,67 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Crédito</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Simulador de Crédito | Cooperativa Dolores Cacuango</title>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS mejorado y en armonía -->
     <link rel="stylesheet" href="simulador.css">
+    <!-- Tus archivos JS originales (sin modificar) -->
     <script src="funciones.js"></script>
     <script src="simulador.js"></script>     
 </head>
 <body>
-
     <div class="container">
-        <h1>Simulador de Crédito</h1>
+        <!-- Encabezado con logo y nombre -->
+        <div class="header">
+            <img src="Dolores Cacuango.png" alt="Retrato de Dolores Cacuango, líder indígena ecuatoriana" class="logo-img">
+            <h1>Cooperativa "Dolores Cacuango"<br><span class="slogan">Sembrando futuro para la comunidad rural del país</span></h1>
+        </div>
 
-        <h2>Datos financieros</h2>
-        <label for="txtIngresos">Ingresos:</label>
-        <input type="text" id="txtIngresos">
+        <!-- Sección Datos financieros con ícono -->
+        <div class="section-title">
+            <i class="fas fa-chart-line section-icon"></i>
+            <h2>Datos financieros</h2>
+        </div>
 
-        <label for="txtEgresos">Egresos:</label>
-        <input type="text" id="txtEgresos">
+        <label for="txtIngresos"><i class="fas fa-money-bill-wave"></i> Ingresos:</label>
+        <input type="text" id="txtIngresos" placeholder="Ej: 1200.50">
 
-        <p>Disponible: <span id="spnDisponible"></span></p>
-        <p>Capacidad de pago mensual: <span id="spnCapacidadPago"></span></p>
+        <label for="txtEgresos"><i class="fas fa-receipt"></i> Egresos:</label>
+        <input type="text" id="txtEgresos" placeholder="Ej: 800.00">
 
-        <h2>Solicitud de crédito</h2>
-        <label for="txtMonto">Monto:</label>
-        <input type="text" id="txtMonto">
+        <div class="result-card">
+            <p>💰 Disponible: <span id="spnDisponible">—</span></p>
+            <p>📊 Capacidad de pago mensual: <span id="spnCapacidadPago">—</span></p>
+        </div>
 
-        <label for="txtPlazo">Plazo en años:</label>
-        <input type="text" id="txtPlazo">
+        <!-- Sección Solicitud de crédito con ícono -->
+        <div class="section-title">
+            <i class="fas fa-hand-holding-usd section-icon"></i>
+            <h2>Solicitud de crédito</h2>
+        </div>
 
-        <label for="txtTasaInteres">Tasa de interés:</label>
-        <input type="text" id="txtTasaInteres">
+        <label for="txtMonto"><i class="fas fa-dollar-sign"></i> Monto:</label>
+        <input type="text" id="txtMonto" placeholder="Ej: 5000">
 
-        <p>Interés a pagar: <span id="spnInteresPagar"></span></p>
-        <p>Total préstamo: <span id="spnTotalPrestamo"></span></p>
-        <p>Cuota mensual: <span id="spnCuotaMensual"></span></p>
-        <p>Estado de crédito: <span id="spnEstadoCredito">ANALIZANDO...</span></p>
+        <label for="txtPlazo"><i class="fas fa-calendar-alt"></i> Plazo en años:</label>
+        <input type="text" id="txtPlazo" placeholder="Ej: 3">
+
+        <label for="txtTasaInteres"><i class="fas fa-percent"></i> Tasa de interés anual (%):</label>
+        <input type="text" id="txtTasaInteres" placeholder="Ej: 8">
+
+        <div class="result-card">
+            <p>📈 Interés a pagar: <span id="spnInteresPagar">—</span></p>
+            <p>💵 Total préstamo: <span id="spnTotalPrestamo">—</span></p>
+            <p>🔄 Cuota mensual: <span id="spnCuotaMensual">—</span></p>
+            <p>✅ Estado de crédito: <span id="spnEstadoCredito">—</span></p>
+        </div>
 
         <div class="buttons">
-            <button id="btnCalcularCredito" onclick="calcular()">Calcular Crédito</button>
-            <button id="btnReiniciar" onclick="reiniciar()">Reiniciar</button>
+            <button id="btnCalcularCredito" onclick="calcular()"><i class="fas fa-calculator"></i> Calcular Crédito</button>
+            <button id="btnReiniciar" onclick="reiniciar()"><i class="fas fa-undo-alt"></i> Reiniciar</button>
         </div>
     </div>
-    
 </body>
 </html>
