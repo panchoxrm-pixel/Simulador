@@ -1,6 +1,19 @@
+Para mejorar la composición visual del simulador:
+
 Eres un experto en programación y diseño gráfico. Te comparto 4 códigos de un proyecto de página web de simulación de crédito de una cooperativa: css, html, js y js. Mejora solo el html y css, no cambies nada en los 2 js. Logra que la página sea muy atractiva para los clientes, quienes son principalmente población rural de la Sierra ecuatoriana. Algunas especificaciones adicionales son: 
 Texto e imágenes
 Nombre de la institución: Cooperativa Dolores Cacuango: Sembrando futuro para la comunidad rural del país. El logo es la imagen de Dolores Cacuango. Quitar “analizando”. 
 Composición
 Debe ser responsive. Los colores son los de la Whipala, sin hacer la página sobrecargada de colores. Cada título tiene su logo, que esté en la misma línea visual del nombre de la cooperativa.
 El archivo de la imagen de Dolores Cacuango es Dolores Cacuango.png. Te la comparto.
+
+Para validar los datos en el frontend:
+
+He hecho algunos ajustes en el html que me enviaste. Te lo comparto. Actúa como un experto en programación. Logra que haya validaciones de datos en:
+Ingresos (permite solo números con hasta 2 decimales o sin decimales)
+Egresos (permite solo números con hasta 2 decimales o sin decimales)
+Monto del préstamo (permite solo números con hasta 2 decimales o sin decimales)
+Plazo en años (permite que solo pueda poner números enteros entre 1 y 12)
+Tasa de interés anual (permite solo números enteros entre 1 y 20)
+
+No hagas otros cambios.

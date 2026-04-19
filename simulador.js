@@ -99,7 +99,7 @@ function reiniciar() {
     document.getElementById("spnInteresPagar").innerText = "";
     document.getElementById("spnTotalPrestamo").innerText = "";
     document.getElementById("spnCuotaMensual").innerText = "";
-    document.getElementById("spnEstadoCredito").innerText = "ANALIZANDO...";
+    document.getElementById("spnEstadoCredito").innerText = "";
     document.getElementById("spnEstadoCredito").style.color = "black";
 }
 
