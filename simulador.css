@@ -249,3 +249,24 @@ button:active {
 input, button {
     -webkit-tap-highlight-color: transparent;
 }
+
+/* Aclaración impuesto SOLCA - más pequeña y alineada a la izquierda */
+.result-card p.aclaracion-solca {
+    font-size: 0.7rem !important;
+    color: #7F8C8D;
+    background: #F4F0E9;
+    padding: 4px 10px;
+    border-radius: 16px;
+    margin: 4px 0 10px 0;
+    text-align: left;
+    justify-content: flex-start;
+    border-bottom: none;
+}
+
+/* En responsive */
+@media (max-width: 550px) {
+    .result-card p.aclaracion-solca {
+        font-size: 0.65rem !important;
+        text-align: left;
+    }
+}

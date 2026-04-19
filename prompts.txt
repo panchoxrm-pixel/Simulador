@@ -1,5 +1,7 @@
 Para mejorar la composición visual del simulador:
 
+1.
+
 Eres un experto en programación y diseño gráfico. Te comparto 4 códigos de un proyecto de página web de simulación de crédito de una cooperativa: css, html, js y js. Mejora solo el html y css, no cambies nada en los 2 js. Logra que la página sea muy atractiva para los clientes, quienes son principalmente población rural de la Sierra ecuatoriana. Algunas especificaciones adicionales son: 
 Texto e imágenes
 Nombre de la institución: Cooperativa Dolores Cacuango: Sembrando futuro para la comunidad rural del país. El logo es la imagen de Dolores Cacuango. Quitar “analizando”. 
@@ -9,6 +11,8 @@ El archivo de la imagen de Dolores Cacuango es Dolores Cacuango.png. Te la compa
 
 Para validar los datos en el frontend:
 
+1.
+
 He hecho algunos ajustes en el html que me enviaste. Te lo comparto. Actúa como un experto en programación. Logra que haya validaciones de datos en:
 Ingresos (permite solo números con hasta 2 decimales o sin decimales)
 Egresos (permite solo números con hasta 2 decimales o sin decimales)
@@ -17,3 +21,21 @@ Plazo en años (permite que solo pueda poner números enteros entre 1 y 12)
 Tasa de interés anual (permite solo números enteros entre 1 y 20)
 
 No hagas otros cambios.
+
+2. 
+
+Aumenta en esta parte una aclaración debajo de Total préstamo, que diga "Incluye los $100 del impuesto a Solca (pago inicial)",
+Logra que calce de forma adecuada visualmente y que sea entendible para el usuario. 
+Devuélveme solo el bloque de texto que te comparto:
+
+<div class="result-card">
+            <p>📈 Interés total a pagar: $ <span id="spnInteresPagar">—</span></p>
+            <p>💵 Total préstamo: $ <span id="spnTotalPrestamo">—</span></p>
+            <p>🔄 Cuota mensual: $ <span id="spnCuotaMensual">—</span></p>
+            <p>✅ Estado de crédito: <span id="spnEstadoCredito">—</span></p>
+        </div>
+
+Este texto debe estar con letra más pequeña y alineado a la izquierda, por lo cual también debes modificar el CSS, solo en lo que respecta a este asunto. Este es el CSS:
+
+
+
