@@ -1,41 +1,25 @@
-
-function calcularDisponible(ingresos,egresos){
-    let valorDisponible;
-    valorDisponible=ingresos-egresos;
-    if(valorDisponible<0){
-        return 0;
-    } return valorDisponible;
+function calcularDisponible(ingresos, egresos) {
+    let valorDisponible = ingresos - egresos;
+    return valorDisponible < 0 ? 0 : valorDisponible;
 }
 
-function calcularCapacidadPago(montoDisponible){
-    let capacidadPago;
-    capacidadPago=montoDisponible/2;
-    return capacidadPago;
+function calcularCapacidadPago(montoDisponible) {
+    return montoDisponible / 2;
 }
 
-function calcularInteresSimple(monto,tasa,plazoAños){
-    let interesSimple;
-    interesSimple=monto*(tasa/100)*plazoAños;
-    return interesSimple;
+function calcularInteresSimple(monto, tasa, plazoAnios) {
+    return monto * (tasa / 100) * plazoAnios;
 }
 
-function calcularTotalPagar(monto,interes){
-    let totalPagar;
-    let impuestoSolca=100;
-    totalPagar=monto+interes+impuestoSolca;
-    return totalPagar;
+function calcularTotalPagar(monto, interes) {
+    let impuestoSolca = 100;
+    return monto + interes + impuestoSolca;
 }
 
-function calcularCuotaMensual(totalPagar,plazoAños){
-    let cuotaMensual;
-    cuotaMensual=totalPagar/(plazoAños*12);
-    return cuotaMensual;
+function calcularCuotaMensual(totalPagar, plazoAnios) {
+    return totalPagar / (plazoAnios * 12);
 }
 
-function aprobarCredito(capacidadPago,cuotaMensual){
-    if(capacidadPago>cuotaMensual){
-       return true;
-    } else {
-        return false
-    }
+function aprobarCredito(capacidadPago, cuotaMensual) {
+    return capacidadPago > cuotaMensual;
 }

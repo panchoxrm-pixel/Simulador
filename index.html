@@ -4,53 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Simulador de Crédito | Cooperativa Dolores Cacuango</title>
-    <!-- FontAwesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- CSS mejorado y en armonía -->
     <link rel="stylesheet" href="simulador.css">
-    <!-- Tus archivos JS originales (sin modificar) -->
     <script src="funciones.js"></script>
-    <script src="simulador.js"></script>     
+    <script src="simulador.js"></script>    
 </head>
 <body>
     <div class="container">
-        <!-- Encabezado con logo y nombre -->
         <div class="header">
-            <img src="Dolores Cacuango.png" alt="Retrato de Dolores Cacuango, líder indígena ecuatoriana" class="logo-img">
+            <img src="Dolores Cacuango.png" alt="Logo" class="logo-img">
             <h1>Cooperativa "Dolores Cacuango"<br><span class="slogan">Sembrando futuro para la comunidad rural del país</span></h1>
         </div>
 
-        <!-- Sección Datos financieros con ícono -->
         <div class="section-title">
             <i class="fas fa-chart-line section-icon"></i>
             <h2>Datos financieros</h2>
         </div>
 
         <label for="txtIngresos"><i class="fas fa-money-bill-wave"></i> Ingresos: $</label>
-        <input type="number" id="txtIngresos" placeholder="Ej: 1200.50" step="0.01" min="0" value="">
+        <input type="number" id="txtIngresos" placeholder="Ej: 1200.50" step="0.01" min="0">
 
-        <label for="txtEgresos"><i class="fas fa-receipt"></i> Egresos: $</label>
-        <input type="number" id="txtEgresos" placeholder="Ej: 800" step="0.01" min="0" value="">
+        <label for="txtArriendo"><i class="fas fa-home"></i> Arriendo: $</label>
+        <input type="number" id="txtArriendo" placeholder="Ej: 300" step="0.01" min="0">
+
+        <label for="txtAlimentacion"><i class="fas fa-utensils"></i> Alimentación: $</label>
+        <input type="number" id="txtAlimentacion" placeholder="Ej: 200" step="0.01" min="0">
+
+        <label for="txtVarios"><i class="fas fa-shopping-basket"></i> Varios: $</label>
+        <input type="number" id="txtVarios" placeholder="Ej: 100" step="0.01" min="0">
 
         <div class="result-card">
+            <p>🧾 Total Egresos: $ <span id="spnEgresos">—</span></p>
             <p>💰 Disponible: $ <span id="spnDisponible">—</span></p>
             <p>📊 Capacidad de pago mensual: $ <span id="spnCapacidadPago">—</span></p>
         </div>
 
-        <!-- Sección Solicitud de crédito con ícono -->
         <div class="section-title">
             <i class="fas fa-hand-holding-usd section-icon"></i>
             <h2>Solicitud de crédito</h2>
         </div>
 
         <label for="txtMonto"><i class="fas fa-dollar-sign"></i> Monto del préstamo: $:</label>
-        <input type="number" id="txtMonto" placeholder="Ej: 5000" step="0.01" min="0" value="">
+        <input type="number" id="txtMonto" placeholder="Ej: 5000" step="0.01" min="0">
 
         <label for="txtPlazo"><i class="fas fa-calendar-alt"></i> Plazo en años:</label>
-        <input type="number" id="txtPlazo" placeholder="Ej: 3" step="1" min="1" max="12" value="">
+        <input type="number" id="txtPlazo" placeholder="Ej: 3" step="1" min="1" max="12">
 
         <label for="txtTasaInteres"><i class="fas fa-percent"></i> Tasa de interés anual (%):</label>
-        <input type="number" id="txtTasaInteres" placeholder="Ej: 8" step="1" min="1" max="20" value="">
+        <input type="number" id="txtTasaInteres" placeholder="Ej: 8" step="1" min="1" max="20">
 
         <div class="result-card">
             <p>📈 Interés total a pagar: $ <span id="spnInteresPagar">—</span></p>
@@ -67,121 +68,21 @@
     </div>
 
     <script>
-        // === VALIDACIONES Y SANEAMIENTO DE CAMPOS ===
-        // No se modifica ningún archivo externo (funciones.js / simulador.js)
-        // Solo se añade lógica de validación antes de llamar a calcular()
-
-        // Referencias a los campos
-        const ingresosInput = document.getElementById('txtIngresos');
-        const egresosInput = document.getElementById('txtEgresos');
-        const montoInput = document.getElementById('txtMonto');
-        const plazoInput = document.getElementById('txtPlazo');
-        const tasaInput = document.getElementById('txtTasaInteres');
-
-        // Función auxiliar para forzar 2 decimales al perder el foco (solo para campos monetarios)
-        function formatearDosDecimales(input) {
-            if (input.value === '') return;
-            let num = parseFloat(input.value);
-            if (!isNaN(num)) {
-                input.value = num.toFixed(2);
-            }
-        }
-
-        // Aplicar formateo a campos monetarios
-        ingresosInput.addEventListener('blur', () => formatearDosDecimales(ingresosInput));
-        egresosInput.addEventListener('blur', () => formatearDosDecimales(egresosInput));
-        montoInput.addEventListener('blur', () => formatearDosDecimales(montoInput));
-
-        // Validar que plazo sea entero entre 1 y 12
-        plazoInput.addEventListener('change', function() {
-            let val = parseInt(this.value);
-            if (isNaN(val)) this.value = '';
-            else if (val < 1) this.value = 1;
-            else if (val > 12) this.value = 12;
-            else this.value = val; // asegura entero
-        });
-
-        // Validar que tasa sea entero entre 1 y 20
-        tasaInput.addEventListener('change', function() {
-            let val = parseInt(this.value);
-            if (isNaN(val)) this.value = '';
-            else if (val < 1) this.value = 1;
-            else if (val > 20) this.value = 20;
-            else this.value = val;
-        });
-
-        // Función de validación global que se ejecuta antes de calcular
         function validarYCalcular() {
-            // Limpiar estilos de error previos
-            const inputs = [ingresosInput, egresosInput, montoInput, plazoInput, tasaInput];
-            inputs.forEach(inp => inp.style.border = '');
-
+            const inputs = ["txtIngresos", "txtArriendo", "txtAlimentacion", "txtVarios", "txtMonto", "txtPlazo", "txtTasaInteres"];
             let errores = [];
-
-            // Validar Ingresos
-            let ingresos = parseFloat(ingresosInput.value);
-            if (isNaN(ingresos) || ingresos < 0) {
-                errores.push('Ingresos: debe ser un número positivo (hasta 2 decimales).');
-                ingresosInput.style.border = '2px solid #E74C3C';
-            }
-
-            // Validar Egresos
-            let egresos = parseFloat(egresosInput.value);
-            if (isNaN(egresos) || egresos < 0) {
-                errores.push('Egresos: debe ser un número positivo (hasta 2 decimales).');
-                egresosInput.style.border = '2px solid #E74C3C';
-            }
-
-            // Validar Monto
-            let monto = parseFloat(montoInput.value);
-            if (isNaN(monto) || monto <= 0) {
-                errores.push('Monto del préstamo: debe ser un número mayor a 0 (hasta 2 decimales).');
-                montoInput.style.border = '2px solid #E74C3C';
-            }
-
-            // Validar Plazo (entero 1-12)
-            let plazo = parseInt(plazoInput.value);
-            if (isNaN(plazo) || plazo < 1 || plazo > 12) {
-                errores.push('Plazo en años: debe ser un número entero entre 1 y 12.');
-                plazoInput.style.border = '2px solid #E74C3C';
-            }
-
-            // Validar Tasa (entero 1-20)
-            let tasa = parseInt(tasaInput.value);
-            if (isNaN(tasa) || tasa < 1 || tasa > 20) {
-                errores.push('Tasa de interés anual: debe ser un número entero entre 1% y 20%.');
-                tasaInput.style.border = '2px solid #E74C3C';
-            }
-
-            // Si hay errores, mostrarlos y NO llamar a calcular()
+            inputs.forEach(id => {
+                let val = parseFloat(document.getElementById(id).value);
+                if (isNaN(val) || val < 0) {
+                    errores.push(id);
+                }
+            });
             if (errores.length > 0) {
-                alert('❌ Por favor corrige los siguientes errores:\n\n- ' + errores.join('\n- '));
-                return false;
+                alert("Por favor completa todos los campos con valores positivos.");
+                return;
             }
-
-            // Si todo está bien, llamar a la función original calcular() que está en simulador.js
             calcular();
         }
-
-        // También prevenir el ingreso de caracteres no numéricos en campos number (por si acaso)
-        // Los navegadores ya lo hacen, pero reforzamos con un listener adicional (opcional)
-        function soloNumerosYDecimal(event, input) {
-            // No es estrictamente necesario porque type="number" ya filtra,
-            // pero algunos navegadores permiten la letra 'e'. Lo bloqueamos.
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'e' || e.key === 'E' || e.key === '-' || e.key === '+' ) {
-                    e.preventDefault();
-                }
-            });
-        }
-        [ingresosInput, egresosInput, montoInput].forEach(inp => soloNumerosYDecimal(null, inp));
-        [plazoInput, tasaInput].forEach(inp => {
-            inp.addEventListener('keydown', (e) => {
-                if (e.key === 'e' || e.key === 'E' || e.key === '.' || e.key === '-' || e.key === '+') {
-                    e.preventDefault();
-                }
-            });
-        });
     </script>
 </body>
 </html>
